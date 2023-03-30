@@ -1,0 +1,24 @@
+#main{
+	height: 100%;
+	width: 100%;
+	margin-right: 0.25%;
+	background-color: #dafdf7;
+	font-size: 2vw;
+}
+#main > div{
+	height: 50%;
+	margin: 0 1.5%;
+	display: flex;
+}
+#main > div > span{
+	padding: 2% 1%;
+}
+input{
+	margin-right: 1%;
+}
+ul{
+	width: 100%;
+}
+li{
+	margin: 1% 0;
+}
