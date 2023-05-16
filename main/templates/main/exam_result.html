@@ -1,0 +1,29 @@
+{%extends  'main/base.html'%}
+{%load static%}
+
+{% block title %}"Результат экзамена{% endblock %}
+
+
+{%block content%}
+
+<div>
+
+       <div class="shadow p-3 mb-5 bg-body rounded">
+           <p>Верных ответов: {{score}} из 20</p>
+       </div>
+    {% if score == 20 %}
+    <div class="p-3 mb-2 bg-success text-white">
+        <p>
+            Экзамен сдан
+        </p>
+    </div>
+    {% else %}
+    <div class="p-3 mb-2 bg-danger text-white">
+        <p>
+            Экзамен не сдан
+        </p>
+    </div>
+
+{% endif %}
+
+{%endblock%}

@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+
+
+<h1>{{ bilety.question }}</h1>
+<div>
+	{% if 'no_image' not in bilety.image.url  %}
+	<p><img src="{{ bilety.image.url }}"></p>
+	{% endif %}
+				<ul>
+				<input type = "checkbox">{{ bilety.answer_text1 }}.</input> <br>
+				<input type = "checkbox">{{ bilety.answer_text2 }}</input> <br>
+				{% if bilety.answer_text3  %}
+				<input type = "checkbox">{{ bilety.answer_text3 }}</input> <br>
+				{% endif %}
+					{% if bilety.answer_text4  %}
+					<input type = "checkbox">{{ bilety.answer_text4 }}</input> <br>
+					{% endif %}
+				</ul>
+			</div>
+
+{% endblock %}

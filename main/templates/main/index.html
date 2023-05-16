@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+		<div id = main class="container">
+			<div>
+				<span>Вашему вниманию предлагаются следующие возможности нашего сайта:</span>
+			</div>
+			
+			<div>
+				<a class="btn btn-primary" href="{% url 'test_exam' %}">Пройти экзамен</a>
+				<a class="btn btn-primary" href="{% url 'test_start' %}">Случайный билет</a>
+				<br>
+				<br>
+			</div>
+		</div>
+{% endblock %}
