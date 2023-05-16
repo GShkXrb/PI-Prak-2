@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+
+{% block title %} {{ title }} {% endblock %}
+
+{% block content %}
+		<div id = main>
+			<div>
+				<span>Пример билета</span>
+			</div>
+
+		</div>
+
+{% if question_list %}
+
+    {% for question in question_list %}
+        <a href="/question/{{ question.id }}/">{{question.question_number }}. {{ question.question }} </a> <br>
+
+    {% endfor %}
+
+{% else %}
+    <p>Отсутствуют вопросы.</p>
+{% endif %}
+
+
+
+<div>
+   <p>{{current_question}}</p>
+   <p>{{current_question.text}}</p>
+</div>
+
+{% endblock %}
+
+

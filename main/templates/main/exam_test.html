@@ -1,0 +1,51 @@
+{%extends  'main/base.html'%}
+{%load static%}
+
+{% block title %}"Экзамен{% endblock %}
+
+
+{%block content%}
+
+<div>
+    {% if finish %}
+       <div class="shadow p-3 mb-5 bg-body rounded">
+           <p>Верных ответов: {{score}} из 20</p>
+       </div>
+    {% else %}
+    {%for q in page_obj%}
+    <h3>{{ q.question }}</h3>
+        <div>
+            {% if 'no_image' not in q.image.url  %}
+            <p><img src="{{ q.image.url }}"></p>
+            {% endif %}
+
+    <form method="POST">
+        {%csrf_token%}
+        <p> <button formaction={% if page_obj.has_next %} "?page={{ page_obj.next_page_number }}" {% else%} "?finish=true" {% endif%} class="btn btn-info" type="submit" name="answer" id="choice1" value='1,{{q.is_correct1}}'>1. {{ q.answer_text1 }}.</button></p>
+        <p> <button formaction={% if page_obj.has_next %} "?page={{ page_obj.next_page_number }}" {% else%} "?finish=true" {% endif%} class="btn btn-info" type="submit" name="answer" id="choice2" value='2,{{q.is_correct2}}'>2. {{ q.answer_text2 }}.</button></p>
+        {% if q.answer_text3  %}
+        <p><button formaction={% if page_obj.has_next %} "?page={{ page_obj.next_page_number }}" {% else%} "?finish=true" {% endif%} class="btn btn-info" type="submit" name="answer" id="choice3" value='3,{{q.is_correct3}}'>3. {{ q.answer_text3 }}.</button></p>
+        {% endif %}
+        {% if q.answer_text4  %}
+        <p><button formaction={% if page_obj.has_next %} "?page={{ page_obj.next_page_number }}" {% else%} "?finish=true" {% endif%} class="btn btn-info" type="submit" name="answer" id="choice4" value='4,{{q.is_correct4}}'>4. {{ q.answer_text4 }}.</button></p>
+        {% endif %}
+            <input type="hidden" name="score" value="{{score}}"/>
+			</div>
+
+    </form>
+
+    {%endfor%}
+
+</div>
+
+<div class="pagination">
+    <span class="step-links">
+        <span class="current">
+            Вопрос {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+        </span>
+
+    </span>
+</div>
+{% endif %}
+
+{%endblock%}
